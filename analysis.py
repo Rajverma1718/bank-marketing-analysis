@@ -43,9 +43,9 @@ campaign.to_csv(OUT / 'conversion_by_contact_count.csv', index=False)
 print('CAMPAIGN CONTACTS:', len(df))
 print('SUBSCRIPTIONS:', int((df['subscribed'] == 'yes').sum()))
 print('OVERALL CONVERSION RATE (%):', round(overall, 2))
-print('\\nTOP CUSTOMER SEGMENTS - MINIMUM 100 CONTACTS')
+print('\nTOP CUSTOMER SEGMENTS - MINIMUM 100 CONTACTS')
 print(segment.head(10).to_string(index=False))
-print('\\nCONVERSION BY CONTACT METHOD')
+print('\nCONVERSION BY CONTACT METHOD')
 print(contact.to_string(index=False))
 
 if plt is not None:
@@ -64,4 +64,4 @@ if plt is not None:
     plt.savefig(OUT / 'conversion_by_contact_count.png', dpi=160)
     plt.close()
 else:
-    print('\\nCharts skipped: install dependencies from requirements.txt to generate PNG visualizations.')
+    print('\nCharts skipped: install dependencies from requirements.txt to generate PNG visualizations.')
