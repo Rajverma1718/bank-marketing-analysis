@@ -21,6 +21,13 @@ OUT.mkdir(exist_ok=True)
 
 df = pd.read_csv(SOURCE, sep=';')
 df.columns = [c.strip().lower().replace(' ', '_') for c in df.columns]
+required_columns = {'age', 'y', 'campaign', 'job', 'contact'}
+missing_columns = sorted(required_columns.difference(df.columns))
+if missing_columns:
+    raise ValueError(
+        'Bank Marketing data is missing required columns: ' + ', '.join(missing_columns)
+    )
+
 df['age_group'] = pd.cut(df['age'], bins=[0, 25, 35, 50, 65, np.inf], labels=['18-25', '26-35', '36-50', '51-65', '66+'])
 df['subscribed'] = df['y']
 df['campaign_contacts'] = df['campaign']
