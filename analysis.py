@@ -33,7 +33,7 @@ for column in ('age', 'campaign'):
     invalid_values = numeric_values.isna()
     if invalid_values.any():
         csv_rows = ', '.join(str(index + 2) for index in df.index[invalid_values])
-        raise ValueError(f'Invalid {column}'} values at CSV row(s): {csv_rows}'}')
+        raise ValueError(f'Invalid {column} values at CSV row(s): {csv_rows}')
     df[column] = numeric_values
 
 df['age_group'] = pd.cut(df['age'], bins=[0, 25, 35, 50, 65, np.inf], labels=['18-25', '26-35', '36-50', '51-65', '66+'])
